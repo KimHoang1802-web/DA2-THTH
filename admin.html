@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/css/output.css">
+</head>
+<body>
+    <!-- ADMIN -->
+    <div class="admin">
+        <div class="admin-left">
+            <div class="admin-left-logo">
+                <img src="../src/img/Logo.jpg" alt="Logo">
+            </div>
+            <div class="admin-left-icon">
+                <a href="#"><p><i class="fa fa-home"></i> Trang chủ</p></a>
+                <a href="nV_bh.html"><p><i class="fa fa-user"></i> Nhân viên bán vé</p></a>
+                <a href="admin.html"><p><i class="fa fa-user-shield"></i> Quản trị</p></a>
+            </div>
+            <div class="admin-left-tag">
+                <ul>
+                    <li onclick="showSection('ben-xe')"><i class="fa fa-tag"></i>    Quản lý bến xe</li>
+                    <li onclick="showSection('tuyen-xe')"><i class="fa fa-tag"></i>   Quản lý tuyến xe</li>
+                    <li onclick="showSection('chuyen-xe')"><i class="fa fa-tag"></i>   Quản lý chuyến xe</li>
+                    <li onclick="showSection('xe')"><i class="fa fa-tag"></i>   Quản lý xe</li>
+                    <li onclick="showSection('nhan-vien')"><i class="fa fa-tag"></i>   Quản lý nhân viên</li>
+                    <li onclick="showSection('khach-hang')"><i class="fa fa-tag"></i>   QUản lý khách hàng</li>
+                </ul>
+            </div>
+        </div>
+        <div class="admin-right">
+            <!-- QUẢN LÝ BẾN XE -->
+            <div id="ben-xe" class="section ben-Xe">
+                <h2>QUẢN LÝ BẾN XE</h2>
+                <div class="mt-3">
+                    <button class="ben-xe-them"><i class="fa fa-user-plus"></i>Thêm bến xe mới</button>
+                    <!-- Table Thêm Bến Xe Mới -->
+                    <div id="popup-form" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+                        <div class="bg-white p-6 rounded shadow-lg w-1/3">
+                            <h2 class="text-lg font-bold mb-4">Thêm Bến Xe Mới</h2>
+                            <label class="block mb-2">Tên Bến Xe:</label>
+                            <input type="text" id="ten-ben-xe" class="w-full p-2 border rounded mb-4">
+                    
+                            <label class="block mb-2">Địa Chỉ:</label>
+                            <input type="text" id="dia-chi" class="w-full p-2 border rounded mb-4">
+                    
+                            <label class="block mb-2">Số Điện Thoại:</label>
+                            <input type="text" id="so-dien-thoai" class="w-full p-2 border rounded mb-4">
+                    
+                            <div class="flex justify-end">
+                                <button id="luu-ben-xe" style="background-color: #5F9EA0;" class=" text-white px-4 py-2 rounded mr-2">Lưu</button>
+                                <button id="dong-popup" style="background-color: #DC143C;" class=" text-white px-4 py-2 rounded">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tìm kiếm Bến xe -->
+                    <form class="max-w-md mx-auto mb-10">   
+                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-green-500 " placeholder="Tìm kiếm bến xe..." required />
+                            <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2">Tìm Bến Xe</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Table hiển thị bến xe -->
+                <div class="relative overflow-x-auto shadow-md table-ben-xe">
+                    <table class="w-full text-left rtl:text-right ">
+                        <thead class="uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    ID Bến Xe
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Tên Bến Xe
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Địa Chỉ
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Số điện thoại Bến
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="ben-xe-body">
+                            <tr class="bg-white border-b border-gray-200">
+                                <th scope="row" class="px-6 py-4 whitespace-nowrap">
+                                    BX00001
+                                </th>
+                                <td class="px-6 py-4">
+                                    Bến xe trung tâm Cần Thơ
+                                </td>
+                                <td class="px-6 py-4">
+                                    Cần Thơ
+                                </td>
+                                <td class="px-6 py-4">
+                                    0000000000
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="btn-ben-xe">
+                                        <button class="ben-xe-sua"><i class="fa fa-user-edit"></i></button>
+                                        <button class="ben-xe-xoa"><i class="fa fa-user-minus"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Popup Sửa Bến Xe -->
+                <div id="popup-sua-ben-xe" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+                    <div class="bg-white p-6 rounded shadow-lg w-1/3">
+                        <h2 class="text-lg font-bold mb-4">Sửa Bến Xe</h2>
+                        <label class="block mb-2">ID Bến Xe:</label>
+                        <input type="text" id="sua-id-ben-xe" class="w-full p-2 border rounded mb-4 bg-gray-100" readonly>
+
+                        <label class="block mb-2">Tên Bến Xe:</label>
+                        <input type="text" id="sua-ten-ben-xe" class="w-full p-2 border rounded mb-4">
+
+                        <label class="block mb-2">Địa Chỉ:</label>
+                        <input type="text" id="sua-dia-chi" class="w-full p-2 border rounded mb-4">
+
+                        <label class="block mb-2">Số Điện Thoại:</label>
+                        <input type="text" id="sua-so-dien-thoai" class="w-full p-2 border rounded mb-4">
+
+                        <div class="flex justify-end">
+                            <button id="luu-sua-ben-xe" class="bg-green-500 text-white px-4 py-2 rounded mr-2">Cập nhật</button>
+                            <button id="dong-sua-popup" class="bg-red-500 text-white px-4 py-2 rounded">Hủy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- QUẢN LÝ TUYẾN XE -->
+            <div id="tuyen-xe" class="section hidden tuyen-Xe">
+                <h2>QUẢN LÝ TUYẾN XE</h2>
+                <div class="mt-3">
+                    <button class="tuyen-xe-them mb-3"><i class="fa fa-user-plus"></i>Thêm tuyến xe</button>
+                    <!-- Table thêm tuyến xe -->
+                    <!-- Tìm kiếm tuyến xe -->
+                        <div class="tuyen-xe-di-den flex items-center justify-center mb-6">
+                            <input type="text" class="border-green-500 text-gray-400 rounded-xl" placeholder="Nhập điểm đi">
+                            <i class="fa fa-arrow-right ml-5 mr-5 text-green-600"></i>
+                            <input type="text" class="border-green-500 text-gray-400 rounded-xl" placeholder="Nhập điểm đến">
+                        </div>
+                        <div class="flex items-center justify-center mb-6"><button class="tuyen-xe-tim-kiem">Tìm kiếm</button></div>
+                        
+                </div>
+                <!-- Table hiển thị các tuyến xe -->
+                <div class="relative overflow-x-auto shadow-md table-tuyen-xe">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    ID tuyến xe
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Tuyến xe
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Loại xe
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Quãng đường
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Thời gian hành trình 
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Giá vé
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b  border-gray-200">
+                                <th scope="row" class="px-6 py-4 text-gray-900">
+                                    TX0001
+                                </th>
+                                <th scope="row" class="px-6 py-4 text-gray-900">
+                                    Cần Thơ <i class="fa fa-long-arrow-alt-right text-green-600"></i>TP.Hồ Chí Minh
+                                </th>
+                                <td class="px-6 py-4">
+                                    Limousine 
+                                </td>
+                                <td class="px-6 py-4">
+                                    300 km
+                                </td>
+                                <td class="px-6 py-4">
+                                    2 giờ 
+                                </td>
+                                <td class="px-6 py-4">
+                                    200.000
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div>
+                                        <button class="tuyen-xe-sua"><i class="fa fa-user-edit"></i></button>
+                                        <button class="tuyen-xe-xoa"><i class="fa fa-user-minus"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+            <!-- QUẢN LÝ CHUYẾN XE -->
+            <div id="chuyen-xe" class="section hidden chuyen-xe">
+                <h2>QUẢN LÝ CHUYẾN XE</h2>
+                <div>
+                    <button class="chuyen-xe-them"><i class="fa fa-user-plus"></i>Thêm chuyến xe</button>
+                    <form class="max-w-md mx-auto mb-5">   
+                        <label for="default-search-CX" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search-CX" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-green-500" placeholder="Nhập ID chuyến..." required />
+                            <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2">Tìm kiếm</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Table hiển thị thông tin chuyến xe -->
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg table-chuyen-xe">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    ID Chuyến
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    ID Tài Xế
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    ID Bến Khởi Hành
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    ID Bến Đến
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    TG_ Di chuyển
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    TG_ Xuất Phát
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    TG_ Dự Đến
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Giá vé
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <span class="sr-only">Edit</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b  border-gray-200 hover:bg-gray-50">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    CX0001
+                                </th>
+                                <td class="px-6 py-4">
+                                    NV00000001
+                                </td>
+                                <td class="px-6 py-4">
+                                    BXCT0001
+                                </td>
+                                <td class="px-6 py-4">
+                                    BXCM001
+                                </td>
+                                <td class="px-6 py-4">
+                                    9 giờ
+                                </td>
+                                <td class="px-6 py-4">
+                                    2025 - 02 - 02 : 9:30:00
+                                </td>
+                                <td class="px-6 py-4">
+                                    2025 - 02 - 02 : 21:30:00
+                                </td>
+                                <td class="px-6 py-4">
+                                    250.000
+                                </td>
+                                <td class="px-6 py-4">
+                                    <button class="chuyen-xe-sua"><i class="fa fa-user-edit"></i></button>
+                                    <button class="chuyen-xe-xoa"><i class="fa fa-user-minus"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- QUẢN LÝ XE -->
+            <div id="xe" class="section hidden xe">
+                <h2>QUẢN LÝ XE</h2>
+                <div>
+                    <button class="xe-them"><i class="fa fa-user-plus"></i> Thêm xe mới</button>
+                    <!-- Tìm kiếm xe  -->
+                    <form class="max-w-md mx-auto mb-5">   
+                        <label for="default-search-XE" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search-XE" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-green-500" placeholder="Nhập tên xe" required />
+                            <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2">Tìm xe</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Lọc theo trạng thái của xe -->
+                <div class="flex justify-end mr-5 mb-5">
+                    <button id="dropdownHelperRadioButton" data-dropdown-toggle="dropdownHelperRadio" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Trạng thái <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg></button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownHelperRadio" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-60" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 6119.5px, 0px);">
+                        <ul class="p-3 space-y-1 text-sm text-gray-700" aria-labelledby="dropdownHelperRadioButton">
+                        <li>
+                            <div class="flex p-2 rounded-sm hover:bg-gray-100">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-4" name="helper-radio" type="radio" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300">
+                            </div>
+                            <div class="ms-2 text-sm">
+                                <label for="helper-radio-4" class="font-medium text-gray-900 ">
+                                    <div>Đang hoạt động</div>
+                                    
+                                </label>
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex p-2 rounded-sm hover:bg-gray-100 ">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-5" name="helper-radio" type="radio" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300">
+                            </div>
+                            <div class="ms-2 text-sm">
+                                <label for="helper-radio-5" class="font-medium text-gray-900">
+                                    <div>Chưa hoạt động</div>
+                                </label>
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex p-2 rounded-sm hover:bg-gray-100 ">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-6" name="helper-radio" type="radio" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 ">
+                            </div>
+                            <div class="ms-2 text-sm">
+                                <label for="helper-radio-6" class="font-medium text-gray-900 ">
+                                    <div>Đang bảo trì</div>
+                                </label>
+                            </div>
+                            </div>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Table Hiển thị xe -->
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg table-xe">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    <span class="sr-only">Image</span>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    ID Xe
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Biển số
+                                </th>
+                                <th class="px-6 py-3">
+                                    Loại xe
+                                </th>
+                                <th class="px-6 py-3">
+                                    Số ghế
+                                </th>
+                                <th class="px-6 py-3">
+                                    Trạng thái
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-50 ">
+                                <td class="p-4">
+                                    <img src="../src/img/xe.jpg" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    XE0001
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    65B
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <p class="p-1 bg-lime-400 text-center">Xe giường nằm</p>
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    45 ghế
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <p class="p-1 bg-green-400 text-center">Đang hoạt động</p>
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <button class="xe-sua"><i class="fa fa-user-edit"></i></button>
+                                    <button class="xe-xoa"><i class="fa fa-user-minus"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-50 ">
+                                <td class="p-4">
+                                    <img src="../src/img/xe.jpg" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    XE0001
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    65B
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <p class="p-1 bg-lime-400 text-center">Xe giường nằm</p>
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    45 ghế
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <p class="p-1 bg-orange-300 text-center">Chưa hoạt động</p>
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <button class="xe-sua"><i class="fa fa-user-edit"></i></button>
+                                    <button class="xe-xoa"><i class="fa fa-user-minus"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-50 ">
+                                <td class="p-4">
+                                    <img src="../src/img/xe.jpg" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    XE0001
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    65B
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <p class="p-1 bg-lime-400 text-center">Xe giường nằm</p>
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    45 ghế
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <p class="p-1 bg-red-300 text-center">Đang bảo trì</p>
+                                </td>
+                                <td class="px-6 py-4  text-gray-900">
+                                    <button class="xe-sua"><i class="fa fa-user-edit"></i></button>
+                                    <button class="xe-xoa"><i class="fa fa-user-minus"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- QUẢN LÝ NHÂN VIÊN -->
+            <div id="nhan-vien" class="section hidden nhan-vien">
+                <h2>QUẢN LÝ NHÂN VIÊN</h2>
+                <div class="mt-3">
+                    <button class="nhan-vien-them"><i class="fa fa-user-plus"></i> Thêm mới Nhân Viên</button>
+                    <!-- Table Thêm Nhân Viên Mới -->
+                    <div id="popup-form-NV" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+                        <div class="bg-white p-6 rounded shadow-lg w-1/3">
+                            <h2 class="text-lg font-bold mb-4">Thêm Nhân Viên Mới</h2>
+                            <label class="block mb-2">Họ và Tên Nhân Viên:</label>
+                            <input type="text" id="ten-nhan-vien" class="w-full p-2 border rounded mb-4">
+                    
+                            <label class="block mb-2">Giới Tính:</label>
+                            <select id="gioi-tinh-nhan-vien" class="w-full p-2 border rounded mb-4">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                    
+                            <label class="block mb-2">CCCD:</label>
+                            <input type="text" id="CCCD-NV" class="w-full p-2 border rounded mb-4">
+                            
+                            <label class="block mb-2">Số điện thoại Nhân Viên:</label>
+                            <input type="text" id="so-dien-thoai-NV" class="w-full p-2 border rounded mb-4">
+
+                            <label class="block mb-2">Địa chỉ:</label>
+                            <input type="text" id="dia-chi-NV" class="w-full p-2 border rounded mb-4">
+
+                            <label class="block mb-2">Chức vụ:</label>
+                            <select id="loai-nhan-vien" class="w-full p-2 border rounded mb-4">
+                                <option value="ban-ve">Nhân viên bán vé</option>
+                                <option value="quan-tri">Quản trị</option>
+                                <option value="tai-xe">Tài xế</option>
+                            </select>
+                            <div class="flex justify-end">
+                                <button id="luu-nhan-vien" style="background-color: #5F9EA0;" class=" text-white px-4 py-2 rounded mr-2">Lưu</button>
+                                <button id="dong-nhan-vien" style="background-color: #DC143C;" class=" text-white px-4 py-2 rounded">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tìm kiếm Nhân Viên -->
+                    <form class="max-w-md mx-auto mb-10">   
+                        <label for="default-search-NV" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search-NV" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-green-500" placeholder="Nhập tên khách hàng..." required />
+                            <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2">Tìm kiếm</button>
+                        </div>
+                    </form>
+                    <!-- Table Nhân Viên -->
+                    <div class="relative overflow-x-auto shadow-md table-nhan-vien">
+                        <table class="w-full text-left rtl:text-right text-gray-500">
+                            <thead class=" text-gray-700 uppercase bg-gray-50 ">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        ID_NV
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Họ và Tên Nhân Viên
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Giới Tính
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        CCCD
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Số điện thoại Nhân Viên
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Địa chỉ
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Chức vụ
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_NV">
+                                <tr class="bg-white border-b border-gray-200">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        NV00000001
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        Kim Hoàng
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        Nữ
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        01234567
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        01234567
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        Lý Tự Trọng, Phường An Cư, quận Ninh Kiều, TPCT
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <p class="p-2 bg-green-300 text-center text-black">Quản trị viên</p>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex">
+                                            <button class="nhan-vien-sua"><i class="fa fa-user-edit"></i></button>
+                                            <button class="nhan-vien-xoa"><i class="fa fa-user-minus"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- QUẢN LÝ KHÁCH HÀNG -->
+            <div id="khach-hang" class="section hidden khach-Hang">
+                <h2>QUẢN LÝ KHÁCH HÀNG</h2>
+                <!-- Tìm kiếm Khách Hàng -->
+                <form class="max-w-md mx-auto my-5">   
+                    <label for="default-search-KH" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input type="search" id="default-search-KH" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-green-500" placeholder="Nhập ID khách hàng" required />
+                        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
+                    </div>
+                </form>
+                <!-- Tbale hiển thị thông tin khách hàng -->
+                <div class="relative overflow-x-auto shadow-md table-khach-hang">
+                    <table class="w-full text-left rtl:text-right">
+                        <thead class=" uppercase bg-gray-50 ">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    ID KH
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Họ tên Khách Hàng
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Giới Tính
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    CCCD
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Số điện thoại khách
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Địa chỉ
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="khach-hang-body">
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-50 ">
+                                <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap">
+                                    KH00000001
+                                </th>
+                                <td class="px-6 py-4">
+                                    Kim Hoàng
+                                </td>
+                                <td class="px-6 py-4">
+                                    Nữ
+                                </td>
+                                <td class="px-6 py-4">
+                                    09123456789
+                                </td>
+                                <td class="px-6 py-4">
+                                    Lý Tự Trọng, Phường An Cư, Quận Ninh Kiều, TPCT
+                                </td>
+                                <td class="px-6 py-4">
+                                    0945678900
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="khach-hang-btn">
+                                        <!-- <button class="khach-hang-sua">Sửa</button> -->
+                                        <button class="khach-hang-xoa">Xoá</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../src/js/main.js"></script>
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>

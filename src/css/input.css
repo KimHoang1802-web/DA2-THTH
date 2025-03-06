@@ -1,0 +1,358 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.admin{
+    display: flex;
+}
+/* ADMIN-LEFT */
+.admin-left{
+    width: 300px;
+    height: auto;
+}
+.admin-left-logo{
+    margin-left: 30px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.admin-left-icon{
+    margin-left: 30px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.admin-left-icon a:first-child{
+    margin-right: 10px;
+}
+.admin-left-icon a:nth-child(3){
+    margin-top: 10px;
+    color: #008000;
+    
+}
+.admin-left-icon a:hover {
+    color: #008000 !important;
+}
+.admin-left-tag{
+    margin-left: 30px;
+    margin-top: 30px;
+    font-size: 16px;
+}
+.admin-left-tag ul li{
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #B3D8A8;
+}
+.admin-left-tag li:hover{
+    background-color: #B3D8A8;
+    transition: 0.5s linear;
+}
+.admin-left-tag i{
+    color: #06B80099;
+}
+/* ADMIN-RIGHT */
+.admin-right{
+    margin-left: 60px;
+    background-color: #B3D8A8;
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 1095px;
+    height: auto;
+}
+
+/* ============== QUẢN LÝ BẾN XE ================= */
+.ben-Xe h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #306E27;
+}
+.table-ben-xe table thead tr th {
+    color: #306E27;
+    font-size: 15px;
+    text-align: center;
+}
+.table-ben-xe table tbody tr th{
+    text-align: center;
+}
+.table-ben-xe table tbody tr td{
+    text-align: center;
+}
+.ben-xe-sua{
+    padding: 10px;
+    background-color: #008000;
+    color: white;
+}
+.ben-xe-xoa{
+    padding: 10px;
+    background-color: #CD5C5C;
+    color: white;
+}
+.ben-xe-them{
+    padding: 10px 50px;
+    background-color: #4682B4;
+    color: white;
+    margin-left: 10px;
+}
+.ben-xe-them:hover{
+    background-color: #87CEFA;
+    color: #4682B4;
+}
+/* ============== QUẢN LÝ TUYẾN XE ================= */
+.tuyen-Xe h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #306E27;
+}
+.tuyen-xe-them{
+    padding: 10px 50px;
+    background-color: #4682B4;
+    color: white;
+    margin-left: 10px;
+}
+.table-tuyen-xe table thead tr th{
+    color: #306E27;
+    font-size: 15px;
+    text-align: center;
+}
+.table-tuyen-xe table tbody tr th{
+    text-align: center;
+}
+.table-tuyen-xe table tbody tr td{
+    text-align: center;
+}
+.tuyen-xe-sua{
+    padding: 10px;
+    background-color: #008000;
+    color: white;
+    margin-bottom: 2px;
+}
+.tuyen-xe-xoa{
+    padding: 10px;
+    background-color: #CD5C5C;
+    color: white;
+}
+.tuyen-xe-tim-kiem{
+    padding: 10px 50px;
+    background-color: #008000;
+    color: white;
+    border: #008000;
+    border-radius: 10px;
+}
+/* ============== QUẢN LÝ XE ================= */
+.xe h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #306E27;
+    margin-left: 10px;
+}
+.xe-them{
+    padding: 10px 50px;
+    background-color: #4682B4;
+    color: white;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.table-xe table thead tr th{
+    color: #306E27;
+    font-size: 15px;
+    text-align: center;
+}
+.table-xe table tbody tr th{
+    text-align: center;
+}
+.table-xe table tbody tr td {
+    text-align: center;
+}
+.xe-sua{
+    padding: 10px;
+    background-color: #008000;
+    color: white;
+    margin-bottom: 2px;
+}
+.xe-xoa{
+    padding: 10px;
+    background-color: #CD5C5C;
+    color: white;
+}
+/* ============== QUẢN LÝ CHUYẾN XE ================= */
+.chuyen-xe h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #306E27;
+    margin-left: 10px;
+}
+.chuyen-xe-them{
+    padding: 10px 50px;
+    background-color: #4682B4;
+    color: white;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.table-chuyen-xe table thead tr th{
+    color: #306E27;
+    font-size: 15px;
+    text-align: center;
+}
+.table-chuyen-xe table tbody tr th{
+    text-align: center;
+}
+.table-chuyen-xe table tbody tr td{
+    text-align: center;
+}
+.chuyen-xe-sua{
+    padding: 10px;
+    background-color: #008000;
+    color: white;
+    margin-bottom: 2px;
+}
+.chuyen-xe-xoa{
+    padding: 10px;
+    background-color: #CD5C5C;
+    color: white;
+}
+/* ============== QUẢN LÝ NHÂN VIÊN ================= */
+.nhan-vien h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #306E27;
+}
+.nhan-vien-them {
+    padding: 10px 25px;
+    background-color: #4682B4;
+    color: white;
+    margin-left: 10px;
+}
+.nhan-vien-them:hover{
+    background-color: #87CEFA;
+    color: #4682B4;
+}
+.table-nhan-vien table thead tr th{
+    color: #306E27;
+    font-size: 15px;
+    text-align: center;
+}
+.ttable-nhan-vien table tbody tr th{
+    font-size: 15px;
+    text-align: center;
+}
+.table-nhan-vien table tbody tr td{
+    text-align: center;
+}
+.nhan-vien-sua{
+    padding: 10px;
+    background-color: #008000;
+    color: white;
+    margin-right: 5px;
+}
+.nhan-vien-xoa{
+    padding: 10px;
+    background-color: #CD5C5C;
+    color: white;
+}
+/* ============== QUẢN LÝ KHÁCH HÀNG ================= */
+.khach-Hang h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #306E27;
+}
+.table-khach-hang table thead tr th{
+    color: #306E27;
+    font-size: 15px;
+    text-align: center;
+}
+.table-khach-hang table tbody tr th{
+    font-size: 15px;
+    text-align: center;
+}
+.table-khach-hang table tbody tr td{
+    text-align: center;
+}
+.khach-hang-btn{
+    display: flex;
+}
+.khach-hang-sua{
+    padding: 10px;
+    background-color: #008000;
+    color: white;
+    margin-right: 5px;
+
+}
+.khach-hang-xoa{
+    padding: 10px;
+    background-color: #CD5C5C;
+    color: white;
+}
+
+/* NHÂN VIÊN BÁN HÀNG */
+.admin-NVBH{
+    display: flex;
+}
+/* NHAN VIEN BAN HANG LEFT */
+.NVBH-left{
+    width: 300px;
+    height: auto;
+}
+.NVBH-left-logo{
+    margin-left: 30px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.NVBH-left-icon{
+    margin-left: 30px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.NVBH-left-icon a:first-child{
+    margin-right: 10px;
+}
+.NVBH-left-icon a:nth-child(2){
+    color: #008000;
+}
+.NVBH-left-icon a:nth-child(3){
+    margin-top: 10px;
+}
+.NVBH-left-icon a:hover {
+    color: #008000 !important;
+}
+.NVBH-left-tag{
+    margin-left: 30px;
+    margin-top: 30px;
+    font-size: 16px;
+}
+.NVBH-left-tag ul li{
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #B3D8A8;
+}
+.NVBH-left-tag li:hover{
+    background-color: #B3D8A8;
+    transition: 0.5s linear;
+}
+.NVBH-left-tag i{
+    color: #06B80099;
+}
+/* NHAN VIEN BAN HANG RIGHT */
+.NVBH-right{
+    margin-left: 60px;
+    background-color: #B3D8A8;
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 1095px;
+    height: auto;
+}
+/* LỊCH TRÌNH */
+.lich-trinh h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #306E27;
+}
+/* FORM ĐĂNG NHẬP POPUP */
+.hidden {
+    display: none;
+}
