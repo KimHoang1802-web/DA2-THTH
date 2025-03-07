@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THTH Bus Lines</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="../src/css/output.css">
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <a href="#" class="logo">THTH</a>
+        <ul class="navbar">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Lịch trình</a></li>
+            <li><a href="#">Tra cứu vé</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><button id="btnLogin" class="btnDangNhap">Đăng nhập</button></li>
+        </ul>
+    </header>
+
+    <!--Trang chu-->
+    <section class="TrangChu" id="TrangChu">
+        <div class="banner">
+            <h1>Đồng hành</h1>
+            <h2>CÙNG NHỮNG CHUYẾN ĐI</h2>
+        </div>
+    </section>
+
+
+    <!--container TimChuyenXe-->
+    <section class="TimChuyenXe">
+        <h3>Tìm kiếm chuyến xe</h3>
+        <div class="searchChuyenXe">
+            <div class="search-content">
+                <h4>Điểm đi</h4>
+                <input type="text" id="start-location" list="locations" placeholder="Chọn điểm đi">
+                <datalist id="locations">
+                    <option value="Cần Thơ">
+                    <option value="Đồng Tháp">
+                    <option value="Hậu Giang">
+                    <option value="TP. Hồ Chí Minh">
+                </datalist>
+            </div>
+            <div class="search-content">
+                <h4>Điểm đến</h4>
+                <input type="text" id="start-location" list="locations" placeholder="Chọn điểm đi">
+                <datalist id="locations">
+                    <option value="Cần Thơ">
+                    <option value="Đồng Tháp">
+                    <option value="Hậu Giang">
+                    <option value="TP. Hồ Chí Minh">
+                </datalist>
+            </div>
+            <div class="search-content">
+                <h4>Ngày xuất phát</h4>
+                <input type="date" id="travel-date">
+            </div>
+            <div class="search-content">
+                <h4>Số vé</h4>
+                <input type="number" id="ticket-count" placeholder="Chọn số vé">
+            </div>
+        </div>
+        <button onclick="searchTrips()" class="btnseachChuyenXe">Tìm chuyến xe</button>
+    </section>
+
+    <!--container CacTuyenPhoBien-->
+    <section class="CacTuyenPhoBien">
+        <h3>Các tuyến phố biến</h3>
+        <div class="row-items">
+            <!--TPB 1-->
+            <div class="container-box">
+                <div class="container-img">
+                    <img src="../src/img/tpHoChiMinh.jpg" alt="Cần Thơ - Tp. Hồ Chí Minh">
+                </div>
+                <h4>Cần Thơ - Tp. Hồ Chí Minh</h4>
+                <ul ThongTinTPB>
+                    <li>200km</li>
+                    <li>4 giờ</li>
+                    <li>Giường nằm</li>
+                </ul>
+            </div>
+            <!--TPB 2-->
+            <div class="container-box">
+                <div class="container-img">
+                    <img src="../src/img/CanTho.jpg" alt="Tp. Hồ Chí Minh - Cần thơ">
+                </div>
+                <h4>Tp. Hồ Chí Minh - Cần thơ</h4>
+                <ul ThongTinTPB>
+                    <li>200km</li>
+                    <li>4 giờ</li>
+                    <li>Giường nằm</li>
+                </ul>
+            </div>
+            <!--TPB 3-->
+            <div class="container-box">
+                <div class="container-img">
+                    <img src="../src/img/HauGiang.jpg" alt="Cần Thơ - Hậu giang">
+                </div>
+                <h4>Cần Thơ - Hậu giang</h4>
+                <ul ThongTinTPB>
+                    <li>200km</li>
+                    <li>4 giờ</li>
+                    <li>Giường nằm</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--footer-->
+    <section id="contact">
+        <div class="footer">
+            <div class="main">
+                <!--Hotline-->
+                <div class="list">
+                    <div class="hotline">
+                        <h3>TRUNG TÂM TỔNG ĐÀI & CSKH</h3>
+                        <h2>1900 6868</h2>
+                        <p>Địa chỉ: 256 Nguyễn Văn Cừ, an Hòa, Ninh Kiều, Cần Thơ</p>
+                        <p>Email: thth@buslines.vn</p>
+                        <p>Số điện thoại: 0686868680</p>
+                    </div>
+                </div>
+
+                <!--List 1-->
+                <div class="list">
+                    <h4>THTH Bus Lines</h4>
+                    <ul>
+                        <li><a href="#">Trang chủ</a></li>   
+                        <li><a href="#">Lịch trình</a></li>   
+                        <li><a href="#">Tuyển dụng</a></li>   
+                        <li><a href="#">Tin tức</a></li>            
+                    </ul>
+                </div>
+
+                <!--List 2-->
+                <div class="list">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">Chăm sóc khách hàng</a></li>   
+                        <li><a href="#">Hướng dấn đặt vé</a></li>   
+                        <li><a href="#">Câu hỏi thường gặp</a></li>         
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!--Link js-->
+    <script>
+        const header = document.querySelector("header");
+        window.addEventListener("scroll", function(){
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+        function searchTrips() {
+                window.location.href = "../src/timtuyenxe.html";
+            }
+        document.getElementById("btnLogin").addEventListener("click", function(){
+                window.location.href = "login.html"
+        });
+    </script>
+</body>
+</html>
